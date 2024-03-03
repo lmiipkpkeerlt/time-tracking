@@ -1,4 +1,4 @@
-smol timetracking tool for projects and jobs
+smol time tracking tool for projects and jobs
 
 # Installation
 - clone this repo
