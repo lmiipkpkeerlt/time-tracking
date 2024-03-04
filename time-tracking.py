@@ -153,16 +153,15 @@ if __name__ == '__main__':
     parser.add_argument('-rm', help='remove an existing project') 
     parser.add_argument('-backup', help='backup database file to BACKUP')
     parser.add_argument('-init', action='store_true', help='initialize the database')
-    parser.add_argument('-ls', action='store_true', help='list all existing projects')
     args = parser.parse_args()
 
     if args.new: create(args.new, args.salary, args.total)
     elif args.rm:
         if confirm(f'remove project {args.rm}?'): remove(args.rm)
         else: print('exiting...'); exit(0)
-    elif args.ls: list()
     elif args.init: init_db()
     elif args.backup: create_backup_db(args.backup)
     elif args.project is not None and args.hours is not None: add_hours(args.project, args.hours, args.date)
     elif args.project is not None and args.hours is None: show_project(args.project)
+    elif args.project is None and args.hours is None: list()
     else: parser.print_help()
